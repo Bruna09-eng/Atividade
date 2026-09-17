@@ -9,15 +9,17 @@ const db = new sqlite3.Database('petamigos.db', (err) => {
     console.log('Conectado ao SQLite.');
   }
 });
-
-// TODO: CREATE TABLE
+  
+// TODO: CREATE TABLE 
 // Escreva aqui o comando SQL para criar a tabela 'tutores'.
 // Colunas necessárias:
-//   id       → chave primária, inteiro, autoincremento
-//   nome     → texto, obrigatório (NOT NULL)
-//   email    → texto, obrigatório (NOT NULL)
-//   telefone → texto, obrigatório (NOT NULL)
-//   servico  → texto, obrigatório (NOT NULL) — valores esperados: 'banho', 'consulta' ou 'hospedagem'
+  
+
+//   id       → PRIMARY KEY, INTERGER AUTOINCREMENT
+//   nome     → TEXT NOT NULL
+//   email    → TEXT NOT NULL
+//   telefone → TEXT NOT NULL
+//   servico  → TEXT NOT NULL) — valores esperados: 'banho', 'consulta' ou 'hospedagem'
 //
 // ATENÇÃO: use IF NOT EXISTS para que o servidor não quebre ao ser reiniciado.
 //
@@ -25,7 +27,13 @@ const db = new sqlite3.Database('petamigos.db', (err) => {
 //   CREATE TABLE IF NOT EXISTS tutores ( ... )
 
 db.run(
-  `/* seu comando SQL aqui */`,
+  `CREATE TABLE IF NOT EXISTS tutores (
+   id        INTEGER PRIMARY KEY AUTOINCREMENT,
+   nome      TEXT NOT NULL,
+   email     TEXT NOT NULL,
+   telefone  TEXT NOT NULL,
+   servico   TEXT NOT NULL)
+  `,
   (err) => {
     if (err) {
       console.error('Erro ao criar tabela:', err.message);

@@ -1,8 +1,15 @@
 const express    = require('express');
 const bodyParser = require('body-parser');
+/**
+ * importar o CORS
+ */
+const cors       = require('cors')
 const db         = require('./database');
 
 const app = express();
+/**
+ * U
+ */
 
 // Middleware: interpreta o corpo das requisições como JSON
 app.use(bodyParser.json());
@@ -33,8 +40,19 @@ app.use(express.static('public'));
 //
 // ─────────────────────────────────────────────────────────────
 app.post('/cadastrar', (req, res) => {
-  // seu código aqui
-});
+   const {nome, email, telefone, servico} = req.body;
+   if(!nome||!email||!telefone||!servico);
+    
+  db.run('INSERT INTO tutores (nome, email, telefone, servico)
+  VALUES (?, ?, ?, ?)
+  [nome,email,telefone,servico]
+
+  if (err){
+  resurt res.status(500).json({ erro: 'falha no cofre' });
+  }
+  resurt res.status(201).json(rows));
+ });
+
 
 
 // ─────────────────────────────────────────────────────────────
@@ -57,7 +75,7 @@ app.post('/cadastrar', (req, res) => {
 //
 // ─────────────────────────────────────────────────────────────
 app.get('/listar', (req, res) => {
-  // seu código aqui
+  // 
 });
 
 
